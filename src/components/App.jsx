@@ -70,7 +70,7 @@
 // import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContact, deleteContact, setFilter } from './actions';
+import { addContact, deleteContact, setFilter } from '../redux/actions';
 import ContactForm from 'components/ContactForm/ContactForm';
 import ContactList from 'components/ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
