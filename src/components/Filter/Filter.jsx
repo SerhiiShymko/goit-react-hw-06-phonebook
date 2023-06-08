@@ -1,10 +1,11 @@
 // import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import css from './Filter.module.css';
+import { getFilter } from 'redux/selectors';
 import { filterContact } from 'redux/contacts-slise';
 
 export const Filter = () => {
-  const filter = useSelector(state => state.filter);
+  const filter = useSelector(getFilter);
   const dispatch = useDispatch();
 
   const onChange = event => {

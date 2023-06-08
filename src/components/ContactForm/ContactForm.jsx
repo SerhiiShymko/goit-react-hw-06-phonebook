@@ -3,7 +3,8 @@ import { Report } from 'notiflix/build/notiflix-report-aio';
 import { nanoid } from 'nanoid';
 import css from './ContactForm.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContact, getContacts } from 'redux/contacts-slise';
+import { addContact } from 'redux/contacts-slise';
+import { getContacts } from 'redux/selectors';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();

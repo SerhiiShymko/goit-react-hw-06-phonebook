@@ -1,16 +1,9 @@
-import PropTypes from 'prop-types';
 import css from './Message.module.css';
 
-function Message({ text }) {
+export const Message = () => {
   return (
     <div className={css.wrapper}>
-      <p className={css.text}>{text}</p>
+      <p className={css.text}>Contact list is empty.</p>
     </div>
   );
-}
-
-Message.prototype = {
-  text: PropTypes.string.isRequired,
 };
-
-export default Message;
