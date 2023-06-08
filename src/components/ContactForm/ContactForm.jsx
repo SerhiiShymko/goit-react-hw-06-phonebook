@@ -1,8 +1,14 @@
-import PropTypes from 'prop-types';
-import css from './ContactForm.module.css';
 import { useState } from 'react';
+import { Report } from 'notiflix/build/notiflix-report-aio';
+import { nanoid } from 'nanoid';
+import css from './ContactForm.module.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { addContact, getContacts } from 'redux/contacts-slise';
 
-export default function ContactForm({ onSubmit }) {
+export const ContactForm = () => {
+  const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
+
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -11,9 +17,24 @@ export default function ContactForm({ onSubmit }) {
 
   const onSubmitForm = e => {
     e.preventDefault();
-    onSubmit({ name, number });
+
+    const newElement = { id: nanoid(), name, number };
+
+    contacts.some(contact => contact.name === name)
+      ? Report.warning(
+          `${name}`,
+          'This user is already in the contact list.',
+          'OK'
+        )
+      : dispatch(addContact(newElement));
+
     reset();
   };
+
+  //    dispatch(addContact({ name, number }));
+  //     setName('');
+  //     setNumber('');
+  // };
 
   const reset = () => {
     setName('');
@@ -53,8 +74,4 @@ export default function ContactForm({ onSubmit }) {
       </button>
     </form>
   );
-}
-
-ContactForm.prototype = {
-  onSubmit: PropTypes.func.isRequired,
 };
