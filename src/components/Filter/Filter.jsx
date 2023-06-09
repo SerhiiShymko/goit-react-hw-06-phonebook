@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import css from './Filter.module.css';
 import { getFilter } from 'redux/selectors';
